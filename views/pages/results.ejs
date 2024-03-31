@@ -5,7 +5,7 @@
     <% Object.keys(data).forEach(function(icao_code) { %>
         <% let flights = data[icao_code]; %>
         <% ['Departures', 'Arrivals'].forEach(function(fT) { %>
-            <% if (flights[fT].length > 0) { %>
+            <% if (flights[fT] && flights[fT].length > 0) { %>
                 <h2 class="my-3"><%= fT %> for <%= icao_code %></h2>
                 <table class="table table-striped">
                     <thead>

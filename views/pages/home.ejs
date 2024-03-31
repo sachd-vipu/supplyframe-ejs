@@ -6,20 +6,12 @@
 </head>
 <body>
     <div class="container">
-      <h1>Airport Data Search</h1>
+      <h1>VATSIM Flight Traffic</h1>
       <!-- Search form -->
       <form id="searchForm" action="/search" method="get">
         <div class="form-group">
-          <label for="airport">Airport</label>
+          <label for="airport">Airport FAA Code</label>
           <input type="text" class="form-control" type="text" id="airport" name="apt" required>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" id="departure" name="dep" value="1" >
-          <label class="form-check-label" for="departure">Departure Only</label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" id="arrival" name="arr" value="1">
-          <label class="form-check-label" for="arrival">Arrival Only</label>
         </div>
         <button type="submit" class="btn btn-primary">Search</button>
       </form>

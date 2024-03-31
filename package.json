@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
@@ -18,5 +18,8 @@
     "express-cache-controller": "^1.1.0",
     "jquery": "^3.7.1",
     "node-fetch": "^2.6.6"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
   }
 }
