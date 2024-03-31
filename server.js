@@ -19,14 +19,9 @@ app.set('view engine', 'ejs');
 let cache = {};
 const CACHE_DURATION = 120000; 
 
-
 app.get('/', function(req, res) {
 res.render('pages/home');
 });
-
-
-
-
 
   app.get('/search', async (req, res) => {
     try {
@@ -40,7 +35,7 @@ res.render('pages/home');
       params: queryParams
     });
 
-      res.render('pages/results', { data: response.data });
+      res.render('pages/home', { data: response.data });
     } catch (error) {
       res.send(error.message);
     }

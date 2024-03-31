@@ -2,12 +2,9 @@
 <html lang="en">
 <head>
 <title>SuppFrame Submission - Vipul Sachdeva</title>
+<link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
 </head>
 <body>
-
-<header>
-<%- include('../partials/header'); %>
-</header>
     <div class="container">
       <h1>Airport Data Search</h1>
       <!-- Search form -->
@@ -26,7 +23,14 @@
         </div>
         <button type="submit" class="btn btn-primary">Search</button>
       </form>
+    </div >
+        <!-- Results section -->
+        <% if (typeof data !== 'undefined' && data) { %>
+        <div class="container">
+            <%- include('results'); %>
+        </div>            
+          <% } %>
+          <script src="/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-    </div
 </body>
 </html>

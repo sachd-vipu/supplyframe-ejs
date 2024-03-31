@@ -1,78 +1,67 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Search Results</title>
-    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
-</head>
 <!-- Ref: https://www.w3schools.com/bootstrap4/bootstrap_ref_all_classes.asp -->
-<body>
-    <div class="container">
-        <h1 class="my-4">Search Results</h1>
+<div class="container">
+    <h1 class="my-4">Search Results</h1>
 
-        <% Object.keys(data).forEach(function(icao_code) { %>
-            <% let flights = data[icao_code]; %>
-            <% ['Departures', 'Arrivals'].forEach(function(fT) { %>
-                <% if (flights[fT]) { %>
-                    <h2 class="my-3"><%= fT %> for <%= icao_code %></h2>
-                    <table class="table table-striped">
-                        <thead>
+    <% Object.keys(data).forEach(function(icao_code) { %>
+        <% let flights = data[icao_code]; %>
+        <% ['Departures', 'Arrivals'].forEach(function(fT) { %>
+            <% if (flights[fT].length > 0) { %>
+                <h2 class="my-3"><%= fT %> for <%= icao_code %></h2>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Call Sign</th>
+                            <th>CID</th>
+                            <th>Name</th>
+                            <th>Latitude</th>
+                            <th>Longitude</th>
+                            <th>Altitude</th>
+                            <th>Ground Speed</th>
+                            <th>Heading</th>
+                            <th>Transponder</th>
+                            <th>Aircraft</th>
+                            <th>Departure</th>
+                            <th>Distance from Departure</th>
+                            <th>Arrival</th>
+                            <th>Distance from Arrival</th>
+                            <th>Alternate</th>
+                            <th>Filed Altitude</th>
+                            <th>Filed TAS</th>
+                            <th>Filed Time Enroute</th>
+                            <th>Filed Fuel Onboard</th>
+                            <th>Stage of Flight</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% flights[fT].forEach(function(flight) { %>
                             <tr>
-                                <th>Call Sign</th>
-                                <th>CID</th>
-                                <th>Name</th>
-                                <th>Latitude</th>
-                                <th>Longitude</th>
-                                <th>Altitude</th>
-                                <th>Ground Speed</th>
-                                <th>Heading</th>
-                                <th>Transponder</th>
-                                <th>Aircraft</th>
-                                <th>Departure</th>
-                                <th>Distance from Departure</th>
-                                <th>Arrival</th>
-                                <th>Distance from Arrival</th>
-                                <th>Alternate</th>
-                                <th>Filed Altitude</th>
-                                <th>Filed TAS</th>
-                                <th>Filed Time Enroute</th>
-                                <th>Filed Fuel Onboard</th>
-                                <th>Stage of Flight</th>
+                                <td><%= flight.callsign %></td>
+                                <td><%= flight.cid %></td>
+                                <td><%= flight.name %></td>
+                                <td><%= flight.latitude %></td>
+                                <td><%= flight.longitude %></td>
+                                <td><%= flight.altitude %></td>
+                                <td><%= flight.ground_speed %></td>
+                                <td><%= flight.heading %></td>
+                                <td><%= flight.transponder %></td>
+                                <td><%= flight.aircraft %></td>
+                                <td><%= flight.departure %></td>
+                                <td><%= flight.nm_from_dep %></td>
+                                <td><%= flight.arrival %></td>
+                                <td><%= flight.nm_from_arr %></td>
+                                <td><%= flight.alternate %></td>
+                                <td><%= flight.filed_altitude %></td>
+                                <td><%= flight.filed_tas %></td>
+                                <td><%= flight.filed_time_enroute %></td>
+                                <td><%= flight.filed_fuel_onboard %></td>
+                                <td><%= flight.stage_of_flight %></td>
                             </tr>
-                        </thead>
-                        <tbody>
-                            <% flights[fT].forEach(function(flight) { %>
-                                <tr>
-                                    <td><%= flight.callsign %></td>
-                                    <td><%= flight.cid %></td>
-                                    <td><%= flight.name %></td>
-                                    <td><%= flight.latitude %></td>
-                                    <td><%= flight.longitude %></td>
-                                    <td><%= flight.altitude %></td>
-                                    <td><%= flight.ground_speed %></td>
-                                    <td><%= flight.heading %></td>
-                                    <td><%= flight.transponder %></td>
-                                    <td><%= flight.aircraft %></td>
-                                    <td><%= flight.departure %></td>
-                                    <td><%= flight.nm_from_dep %></td>
-                                    <td><%= flight.arrival %></td>
-                                    <td><%= flight.nm_from_arr %></td>
-                                    <td><%= flight.alternate %></td>
-                                    <td><%= flight.filed_altitude %></td>
-                                    <td><%= flight.filed_tas %></td>
-                                    <td><%= flight.filed_time_enroute %></td>
-                                    <td><%= flight.filed_fuel_onboard %></td>
-                                    <td><%= flight.stage_of_flight %></td>
-                                </tr>
-                            <% }) %>
-                        </tbody>
-                    </table>
-                <% } else { %>
-                    <p class="my-3">No <%= fT %> data available for <%= icao_code %>.</p>
-                <% } %>
-            <% }) %>
+                        <% }) %>
+                    </tbody>
+                </table>
+            <% } else { %>
+                <p class="my-3">No <%= fT %> data available for <%= icao_code %>.</p>
+            <% } %>
         <% }) %>
-    </div>
-    <script src="/bootstrap/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+    <% }) %>
+</div>
