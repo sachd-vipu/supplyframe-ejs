@@ -5,14 +5,9 @@ const fetch = require('node-fetch');
 const axios = require('axios');
 
 const app = express();
-app.use(
-    "/css",
-    express.static(path.join(__dirname, "node_modules/bootstrap/dist/css"))
-  )
-  app.use(
-    "/js",
-    express.static(path.join(__dirname, "node_modules/bootstrap/dist/js"))
-  )
+app.use(express.static('public'));
+  app.use('/bootstrap', express.static('node_modules/bootstrap/dist'));
+
   app.use("/js", express.static(path.join(__dirname, "node_modules/jquery/dist")))
 
   app.use(cacheControl({
@@ -31,6 +26,8 @@ res.render('pages/home');
 
 
 
+
+
   app.get('/search', async (req, res) => {
     try {
         const { apt, dep, arr } = req.query;
@@ -42,7 +39,6 @@ res.render('pages/home');
         const response = await axios.get(`https://api.aviationapi.com/v1/vatsim/pilots`, {
       params: queryParams
     });
-    console.log(response.data);
 
       res.render('pages/results', { data: response.data });
     } catch (error) {
